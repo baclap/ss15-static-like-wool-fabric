@@ -1,16 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../result-bar/result-bar.html">
 
 <polymer-element name="movie-card" attributes="mtitle poster">
     <template>
         <link rel="stylesheet" href="../../styles/movie-card.css">
         <div layout horizontal>
             <img id ="poster" src="{{poster}}" width="54" height="80" alt="{{title}}" />
-            <div flex layout vertical center>
+            <div flex layout vertical>
                 <div id="title">{{mtitle}}</div>
-                <div id="results" flex layout horizontal center>
-                    <span id="stay">75 Stay</span>
-                    <span id="divider">/</span>
-                    <span id="leave">25 Leave</span>
+                <div flex layout horizontal center center-justified>
+                    <result-bar stay="75" leave="25"></result-bar>
                 </div>
             </div>
         </div>

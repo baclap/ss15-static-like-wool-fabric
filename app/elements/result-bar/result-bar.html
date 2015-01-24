@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="result-bar" attributes="stay leave">
+    <template>
+        <link rel="stylesheet" href="../../styles/result-bar.css">
+        <div id="stay" layout horizontal center center-justified>{{stay}}</div>
+        <div id="leave" layout horizontal center center-justified>{{leave}}</div>
+    </template>
+    <script>
+        (function () {
+            Polymer('result-bar', {
+                stay: 50,
+                leave: 50,
+                observe: {
+                    'stay': 'stayUpdated',
+                    'leave': 'leaveUpdated',
+                },
+                ready: function() {
+                    console.log("result-bar ready");
+                },
+                stayUpdated: function() {
+                    this.$.stay.style.width = this.stay + "%";
+                },
+                leaveUpdated: function() {
+                    this.$.leave.style.width = this.leave + "%";
+                }
+            });
+        })();
+    </script>
+</polymer-element>

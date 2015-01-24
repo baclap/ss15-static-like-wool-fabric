@@ -1,0 +1,32 @@
+:host {
+    width: 80%;
+    height: 26px;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+#stay, #leave {
+    height: 100%;
+    font-size: 14px;
+    line-height: 1;
+    color: rgba(242, 242, 242, .95);
+    text-shadow: 1px 1px #666;
+}
+
+#stay {
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+    background: #0FB048;
+    box-shadow: inset 2px 2px 2px rgba(242, 242, 242, .5);
+}
+
+#leave {
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    background: #EB1C22;
+    box-shadow: inset -2px 2px 2px rgba(242, 242, 242, .5);
+}
