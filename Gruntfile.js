@@ -54,40 +54,6 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/elements/{,*/}*.css'
         ],
         tasks: ['copy:styles', 'autoprefixer:server']
-      },
-      sass: {
-        files: [
-          '<%= yeoman.app %>/styles/{,*/}*.{scss,sass}',
-          '<%= yeoman.app %>/elements/{,*/}*.{scss,sass}'
-        ],
-        tasks: ['sass:server', 'autoprefixer:server']
-      }
-    },
-    // Compiles Sass to CSS and generates necessary files if requested
-    sass: {
-      options: {
-        includePaths: ['bower_components']
-        },
-      dist: {
-        options: {
-          style: 'compressed'
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>',
-          src: ['styles/{,*/}*.{scss,sass}', 'elements/{,*/}*.{scss,sass}'],
-          dest: '<%= yeoman.dist %>',
-          ext: '.css'
-        }]
-      },
-      server: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>',
-          src: ['styles/{,*/}*.{scss,sass}', 'elements/{,*/}*.{scss,sass}'],
-          dest: '.tmp',
-          ext: '.css'
-        }]
       }
     },
     autoprefixer: {
@@ -212,6 +178,23 @@ module.exports = function (grunt) {
         }]
       }
     },
+    cssmin: {
+      main: {
+        files: {
+          '<%= yeoman.dist %>/styles/main.css': [
+            '.tmp/concat/styles/{,*/}*.css'
+          ]
+        }
+      },
+      elements: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/elements',
+          src: '{,*/}*.css',
+          dest: '<%= yeoman.dist %>/elements'
+        }]
+      }
+    },
     minifyHtml: {
       options: {
         quotes: true,
@@ -239,7 +222,7 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'elements/**',
-            '!elements/**/*.scss',
+            '!elements/**/*.css',
             'images/{,*/}*.{webp,gif}',
             'bower_components/**'
           ]
@@ -306,7 +289,6 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'sass:server',
       'copy:styles',
       'autoprefixer:server',
       'connect:livereload',
@@ -321,13 +303,13 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'sass',
     'copy',
     'useminPrepare',
     'imagemin',
     'concat',
     'autoprefixer',
     'uglify',
+    'cssmin',
     'vulcanize',
     'usemin',
     'minifyHtml'
