@@ -1,0 +1,41 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="second-ending-logo" attributes="">
+    <template>
+        <style>
+        :host {
+            display: inline-block;
+        }
+
+        h1 {
+            width: 171px;
+            height: 65px;
+            margin: 0;
+            padding: 0;
+            text-indent: -9999px;
+            background: url('../../images/2nding.gif') no-repeat;
+            background-size: 171px 65px;
+        }
+
+        h2 {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            line-height: 1;
+            font-weight: normal;
+            color: lightblue;
+        }
+        </style>
+        <h1>2nding</h1>
+        <h2>Is there anyhing after the credits?</h2>
+    </template>
+    <script>
+        (function () {
+            Polymer('second-ending-logo', {
+                ready: function() {
+                    console.log("hi");
+                }
+            });
+        })();
+    </script>
+</polymer-element>
