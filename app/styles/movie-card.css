@@ -1,0 +1,22 @@
+:host {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px 0 0 0;
+    padding: 10px;
+    background: white;
+    box-shadow: 0px 5px 5px #ccc;
+}
+#title {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+}
+#stay {
+    color: green;
+}
+#leave {
+    color: red;
+}
+#divider {
+    margin: 0 5px;
+}

@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="movie-card" attributes="title poster">
+    <template>
+        <link rel="stylesheet" href="../../styles/movie-card.css">
+        <div layout horizontal>
+            <img id ="poster" src="{{poster}}" width="54" height="80" alt="{{title}}" />
+            <div flex layout vertical center>
+                <div id="title">{{title}}</div>
+                <div id="results" flex layout horizontal center>
+                    <span id="stay">75 Stay</span>
+                    <span id="divider">/</span>
+                    <span id="leave">25 Leave</span>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+        (function () {
+            Polymer('movie-card', {
+                title: null,
+                poster: null,
+                ready: function() {
+                    console.log("movie-card ready");
+                }
+            });
+        })();
+    </script>
+</polymer-element>
