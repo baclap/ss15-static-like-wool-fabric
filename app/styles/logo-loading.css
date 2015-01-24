@@ -17,7 +17,7 @@
     display: inline-block;
     position: absolute;
     top: 0;
-    background-color: lightblue;
+    background-color: #7eb2e1;
     border-radius: 100%;
 
     -webkit-animation: bounce 2.0s infinite ease-in-out;

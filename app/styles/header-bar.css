@@ -14,7 +14,7 @@ paper-input /deep/ .unfocused-underline {
     background-color: whitesmoke;
 }
 paper-input /deep/ .focused-underline {
-    background-color: lightblue;
+    background-color: #7eb2e1;
 }
 paper-input /deep/ ::-webkit-input-placeholder {
     color: rgba(242, 242, 242, .5); /* whitesmoke with 50% opacity */
