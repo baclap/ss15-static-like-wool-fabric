@@ -1,0 +1,6 @@
+{
+  "name": "ss15-static-like-wool-fabric",
+  "root": "app",
+  "clean_urls": true,
+  "error_page": "404.html"
+}
