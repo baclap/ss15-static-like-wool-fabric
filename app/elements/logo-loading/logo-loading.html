@@ -1,0 +1,22 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../second-ending-logo/second-ending-logo.html">
+
+<polymer-element name="logo-loading" attributes="">
+    <template>
+        <link rel="stylesheet" href="../../styles/logo-loading.css">
+        <second-ending-logo></second-ending-logo>
+        <div class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>
+    </template>
+    <script>
+        (function () {
+            Polymer('logo-loading', {
+                ready: function() {
+                    console.log("logo-loading ready");
+                }
+            });
+        })();
+    </script>
+</polymer-element>

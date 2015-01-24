@@ -1,6 +1,6 @@
 core-toolbar {
-    background: midnightblue;
-    color: lightblue;
+    background: #e93824;
+    color: whitesmoke;
 }
 
 
@@ -11,17 +11,17 @@ paper-input::shadow paper-input-decorator {
     padding: 0 0 5px 0;
 }
 paper-input /deep/ .unfocused-underline {
-    background-color: lightblue;
+    background-color: whitesmoke;
 }
 paper-input /deep/ .focused-underline {
     background-color: lightblue;
 }
 paper-input /deep/ ::-webkit-input-placeholder {
-    color: rgba(164, 206, 236, .5); /* lightblue with 50% opacity */
+    color: rgba(242, 242, 242, .5); /* whitesmoke with 50% opacity */
 }
 paper-input /deep/ ::-moz-placeholder {
-    color: rgba(164, 206, 236, .5);
+    color: rgba(242, 242, 242, .5);
 }
 paper-input /deep/ :-ms-input-placeholder {
-    color: rgba(164, 206, 236, .5);
+    color: rgba(242, 242, 242, .5);
 }
