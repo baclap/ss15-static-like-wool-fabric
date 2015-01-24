@@ -1,0 +1,23 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../logo-loading/logo-loading.html">
+<link rel="import" href="../movie-list/movie-list.html">
+
+<polymer-element name="main-content" attributes="">
+    <template>
+        <logo-loading fit layout vertical center center-justified hidden?="{{!show_loading}}"></logo-loading>
+        <movie-list layout vertical center hidden?="{{show_loading}}"></movie-list>
+    </template>
+    <script>
+        (function () {
+            Polymer('main-content', {
+                show_loading: true,
+                ready: function() {
+                    var self = this;
+                    this.addEventListener('movies-loaded', function(e){
+                        self.show_loading = false;
+                    });
+                }
+            });
+        })();
+    </script>
+</polymer-element>

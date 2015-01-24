@@ -13,13 +13,18 @@
         (function () {
             Polymer('movie-list', {
                 movies: [],
-                is_loaded: false,
                 ready: function() {
                     console.log("movie-list ready");
                 },
                 moviesLoaded: function() {
                     this.movies = this.$.ajax.response.movies;
-                    this.is_loaded = true;
+                    //this.fire('movies-loaded');
+
+                    // temporarily, for demo purposes
+                    var self = this;
+                    setTimeout(function(){
+                        self.fire('movies-loaded');
+                    }, 2000);
                 }
             });
         })();
