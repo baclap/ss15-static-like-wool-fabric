@@ -1,15 +1,17 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../result-bar/result-bar.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 
 <polymer-element name="movie-card" attributes="movie_title movie_poster movie_id">
     <template>
+        <firebase-element id="firebase" location="https://2nding.firebaseio.com/movies/{{movie_id}}" data="{{votes}}"></firebase-element>
         <link rel="stylesheet" href="../../styles/movie-card.css">
         <div id="movie-box" layout horizontal>
             <img id ="poster" src="{{movie_poster}}" width="54" height="80" alt="{{title}}" />
             <div flex layout vertical>
                 <div id="title" flex layout horizontal top>{{movie_title}}</div>
                 <div id="result-wrap" layout horizontal center center-justified>
-                    <result-bar stay="75" leave="25"></result-bar>
+                    <result-bar stay="{{votes.stay}}" leave="{{votes.leave}}"></result-bar>
                 </div>
             </div>
         </div>
@@ -21,6 +23,7 @@
     <script>
         (function () {
             Polymer('movie-card', {
+                movie_id: null,
                 movie_title: null,
                 movie_poster: null,
                 vote_choice: null,
@@ -28,20 +31,56 @@
                     console.log("movie-card ready");
                 },
                 voteStay: function() {
-                    if (this.vote_choice != "stay") {
-                        this.vote_choice = "stay";
-                    } else {
-                        this.vote_choice = null;
-                    }
-                    console.log("vote to stay");
+                    this.vote('stay');
                 },
                 voteLeave: function() {
-                    if (this.vote_choice != "leave") {
-                        this.vote_choice = "leave";
-                    } else {
-                        this.vote_choice = null;
+                    this.vote('leave');
+                },
+                vote: function(choice) {
+                    var undo_vote = false;
+                    switch(this.vote_choice) {
+                        case "stay":
+                        // previously voted to stay
+                            if (choice == "stay") {
+                                // then tapped stay again, so remove the vote
+                                this.votes.stay--;
+                                undo_vote = true;
+                            } else {
+                                // then tapped leave, so change the vote
+                                this.votes.stay--;
+                                this.votes.leave++;
+                            }
+                            break;
+
+                        case "leave":
+                        // previously voted to leave
+                            if (choice == "leave") {
+                                // then tapped leave again, so remove the vote
+                                this.votes.leave--;
+                                undo_vote = true;
+                            } else {
+                                // then tapped stay, so change the vote
+                                this.votes.leave--;
+                                this.votes.stay++;
+                            }
+                            break;
+
+                        default:
+                        // hasn't voted yet
+                            if (choice == "stay") {
+                                // vote stay
+                                this.votes.stay++;
+                            } else {
+                                // vote leave
+                                this.votes.leave++;
+                            }
+                            break;
                     }
-                    console.log("vote to leave");
+                    if (undo_vote) {
+                        this.vote_choice = null;
+                    } else {
+                        this.vote_choice = choice;
+                    }
                 }
             });
         })();
