@@ -3,12 +3,14 @@
 <link rel="import" href="../movie-list/movie-list.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/core-overlay/core-overlay.html">
+<link rel="import" href="../header-bar/header-bar.html">
 
 <polymer-element name="main-content" attributes="">
     <template>
       <link rel="stylesheet" href="../../styles/movie-card.css">
         <logo-loading fit layout vertical center center-justified hidden?="{{!show_loading}}"></logo-loading>
-        <movie-list layout vertical center hidden?="{{show_loading}}"></movie-list>
+        <header-bar flex layout userInput="{{user_input}}" hidden?="{{show_loading}}"></header-bar>
+        <movie-list layout vertical center searchUrl="{{searchUrl}}" hidden?="{{show_loading}}"></movie-list>
         <paper-fab mini icon="help" style="background-color:#20E3BF; box-shadow: 0px 2px 2px #099; position:fixed; bottom:20px; right:35px" id="view-info-button" on-click="{{toggle}}"></paper-fab>
         <core-overlay id="overlay" layered backdrop class="core-transition-top">
           <button core-overlay-toggle style="padding:10px; background-color:#A2F2F1;">
@@ -31,18 +33,22 @@
             Polymer('main-content', {
                 show_loading: true,
                 show_info: false,
+                searchUrl:"http://api.themoviedb.org/3/movie/now_playing?api_key=053bc4c358ed49c08f6b0d197c632c49",
                 ready: function() {
                     var self = this;
                     this.addEventListener('movies-loaded', function(e){
                         self.show_loading = false;
                     });
+                    this.addEventListener('input-detected',function(e){
+                        self.searchUrl="http://api.themoviedb.org/3/search/movie?api_key=053bc4c358ed49c08f6b0d197c632c49&query="+encodeURIComponent(this.user_input);
+                    });
+                    this.addEventListener('search-off', function(e){
+                        self.searchUrl = "http://api.themoviedb.org/3/movie/now_playing?api_key=053bc4c358ed49c08f6b0d197c632c49"
+                    });
                 },
                 toggle: function() {
-                 // this.show_info = !this.show_info;
-                this.$.overlay.toggle();
-                  console.log("View Info");
-                },
-
+                  this.$.overlay.toggle();
+                }
             });
         })();
     </script>
