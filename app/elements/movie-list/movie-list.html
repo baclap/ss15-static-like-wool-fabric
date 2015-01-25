@@ -18,24 +18,12 @@
             Polymer('movie-list', {
                 movies: [],
                 searchUrl:"",
-                // search_url:"http://api.themoviedb.org/3/movie/now_playing?api_key=053bc4c358ed49c08f6b0d197c632c49",
                 ready: function() {
-                    console.log("movie-list ready");
-                   // console.log(searchUrl);
-                 
-                // console.log(this.globals.search_global_url);
-                   /* var self = this;
-                    this.addEventListener('input-detected', function(e){
-                        console.log("Event Detected");
-                        self.search_url="http://api.themoviedb.org/3/search/movie?api_key=053bc4c358ed49c08f6b0d197c632c49&query=taken";
-
-                    });*/
+                    //console.log("movie-list ready");
                 },
                 
                 moviesLoaded: function() {
                     this.movies = this.$.ajax.response.results;
-                 
-                    //this.fire('movies-loaded');
 
                     // temporarily, for demo purposes
                     var self = this;
