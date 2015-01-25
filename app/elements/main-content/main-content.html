@@ -35,7 +35,6 @@
                 show_info: false,
                 searchUrl:"http://api.themoviedb.org/3/movie/now_playing?api_key=053bc4c358ed49c08f6b0d197c632c49",
                 ready: function() {
-                    //console.log('main-content ready');
                     var self = this;
                     this.addEventListener('movies-loaded', function(e){
                         self.show_loading = false;

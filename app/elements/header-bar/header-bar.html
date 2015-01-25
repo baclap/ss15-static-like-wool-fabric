@@ -22,15 +22,23 @@
                 icon: 'search',
                 userInput: "",
                 ready: function() {
-                    //console.log("header-bar ready");
+                    console.log("header-bar ready");
+                    //console.log(userInput);
+
                 },
                 release_key: function(){
+                    //console.log("User Input detected");
                     clearTimeout();
-                    var self = this;
-                    setTimeout(function(){
-                        self.fire('input-detected');
-                    }, 1000);
-                },
+                     var self = this;
+                  //   console.log(this.fire('input-detected'));
+                     setTimeout(function(){
+                         self.fire('input-detected');
+                    }, 2000);
+                   
+                  
+
+                    //console.log(this.search_url);
+                    },
                 toggleSearch: function() {
                     if (this.search_is_off) { // then turn it on
                         this.icon = 'clear';
