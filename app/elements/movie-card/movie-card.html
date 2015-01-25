@@ -1,13 +1,13 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../result-bar/result-bar.html">
 
-<polymer-element name="movie-card" attributes="mtitle poster">
+<polymer-element name="movie-card" attributes="movie_title movie_poster movie_id">
     <template>
         <link rel="stylesheet" href="../../styles/movie-card.css">
         <div id="movie-box" layout horizontal>
-            <img id ="poster" src="{{poster}}" width="54" height="80" alt="{{title}}" />
+            <img id ="poster" src="{{movie_poster}}" width="54" height="80" alt="{{title}}" />
             <div flex layout vertical>
-                <div id="title" flex layout horizontal top>{{mtitle}}</div>
+                <div id="title" flex layout horizontal top>{{movie_title}}</div>
                 <div id="result-wrap" layout horizontal center center-justified>
                     <result-bar stay="75" leave="25"></result-bar>
                 </div>
@@ -21,8 +21,8 @@
     <script>
         (function () {
             Polymer('movie-card', {
-                mtitle: null,
-                poster: null,
+                movie_title: null,
+                movie_poster: null,
                 vote_choice: null,
                 ready: function() {
                     console.log("movie-card ready");
