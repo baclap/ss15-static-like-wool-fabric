@@ -1,10 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../result-bar/result-bar.html">
-<link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
+<link rel="import" href="../bretts-firebase/bretts-firebase.html">
 
 <polymer-element name="movie-card" attributes="movie_title movie_poster movie_id">
     <template>
-        <firebase-element id="firebase" location="https://2nding.firebaseio.com/movies/{{movie_id}}" data="{{votes}}"></firebase-element>
+        <bretts-firebase id="firebase" location="https://2nding.firebaseio.com/movies/{{movie_id}}" data="{{votes}}"></bretts-firebase>
         <link rel="stylesheet" href="../../styles/movie-card.css">
         <div id="movie-box" layout horizontal>
             <img id ="poster" src="{{movie_poster}}" width="54" height="80" alt="{{title}}" />
@@ -30,9 +30,10 @@
                 ready: function() {
                     console.log("movie-card ready");
                     // if this movie has no votes yet set to zeros
-                    if (!this.votes) {
-                        this.votes = {stay: 0, leave: 0};
-                    }
+                    var self = this;
+                    this.addEventListener('no-firebase-data', function(e){
+                        self.votes = {stay: 0, leave: 0};
+                    })
                 },
                 voteStay: function() {
                     this.vote('stay');
