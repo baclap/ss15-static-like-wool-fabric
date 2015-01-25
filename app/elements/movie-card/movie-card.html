@@ -7,8 +7,8 @@
         <div id="movie-box" layout horizontal>
             <img id ="poster" src="{{poster}}" width="54" height="80" alt="{{title}}" />
             <div flex layout vertical>
-                <div id="title">{{mtitle}}</div>
-                <div flex layout horizontal center center-justified>
+                <div id="title" flex layout horizontal top>{{mtitle}}</div>
+                <div id="result-wrap" layout horizontal center center-justified>
                     <result-bar stay="75" leave="25"></result-bar>
                 </div>
             </div>
