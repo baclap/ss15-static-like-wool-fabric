@@ -17,6 +17,10 @@
     text-shadow: 1px 1px #666;
 }
 
+:host(.empty) #stay, :host(.empty) #leave {
+    background: #ccc;
+}
+
 #stay {
     border-top-left-radius: 13px;
     border-bottom-left-radius: 13px;

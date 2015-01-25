@@ -24,11 +24,13 @@
                         // no votes yet...
                         this.$.stay.style.width = "50%";
                         this.$.leave.style.width = "50%";
+                        this.classList.add('empty');
                     } else {
                         var stay_percent = this.getWidthPercent(this.stay, total_votes);
                         var leave_percent = this.getWidthPercent(this.leave, total_votes);
                         this.$.stay.style.width = stay_percent + "%";
                         this.$.leave.style.width = leave_percent + "%";
+                        this.classList.remove('empty');
                     }
                 },
                 getWidthPercent: function(votes, total) {

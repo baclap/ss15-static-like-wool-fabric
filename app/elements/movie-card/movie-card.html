@@ -29,6 +29,10 @@
                 vote_choice: null,
                 ready: function() {
                     console.log("movie-card ready");
+                    // if this movie has no votes yet set to zeros
+                    if (!this.votes) {
+                        this.votes = {stay: 0, leave: 0};
+                    }
                 },
                 voteStay: function() {
                     this.vote('stay');
