@@ -24,12 +24,8 @@
                 
                 moviesLoaded: function() {
                     this.movies = this.$.ajax.response.results;
-
-                    // temporarily, for demo purposes
                     var self = this;
-                    setTimeout(function(){
-                        self.fire('movies-loaded');
-                    }, 2000);
+                    self.fire('movies-loaded');
                 }
             });
         })();
