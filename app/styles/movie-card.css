@@ -15,14 +15,15 @@
 #title {
     font-size: 18px;
     font-weight: bold;
-    margin: 15px 15px 0 15px;
+    margin: 10px;
+    overflow: scroll;
 }
 #poster {
-    margin: 15px;
+    margin: 10px;
 }
 
 #result-wrap {
-    margin: 0 15px 15px 15px;
+    margin: 0 10px 30px 10px;
 }
 
 #vote-box {
