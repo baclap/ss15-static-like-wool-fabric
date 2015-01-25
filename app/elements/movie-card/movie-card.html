@@ -4,7 +4,7 @@
 <polymer-element name="movie-card" attributes="mtitle poster">
     <template>
         <link rel="stylesheet" href="../../styles/movie-card.css">
-        <div layout horizontal>
+        <div id="movie-box" layout horizontal>
             <img id ="poster" src="{{poster}}" width="54" height="80" alt="{{title}}" />
             <div flex layout vertical>
                 <div id="title">{{mtitle}}</div>
@@ -13,14 +13,35 @@
                 </div>
             </div>
         </div>
+        <div id="vote-box" class="{{vote_choice}}" layout horizontal>
+            <div id="vote-stay" on-click="{{voteStay}}" flex>Stay</div>
+            <div id="vote-leave" on-click="{{voteLeave}}" flex>Leave</div>
+        </div>
     </template>
     <script>
         (function () {
             Polymer('movie-card', {
                 mtitle: null,
                 poster: null,
+                vote_choice: null,
                 ready: function() {
                     console.log("movie-card ready");
+                },
+                voteStay: function() {
+                    if (this.vote_choice != "stay") {
+                        this.vote_choice = "stay";
+                    } else {
+                        this.vote_choice = null;
+                    }
+                    console.log("vote to stay");
+                },
+                voteLeave: function() {
+                    if (this.vote_choice != "leave") {
+                        this.vote_choice = "leave";
+                    } else {
+                        this.vote_choice = null;
+                    }
+                    console.log("vote to leave");
                 }
             });
         })();

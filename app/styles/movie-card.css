@@ -1,18 +1,67 @@
 :host {
     width: 100%;
     max-width: 400px;
-    margin: 10px 0 0 0;
-    padding: 10px;
+    margin: 0 0 10px 0;
+    padding: 0;
     /*background: rgba(15, 176, 72, .5);
     background: rgba(235, 28, 34, .325);*/
-    box-shadow: 0px 5px 5px #ccc;
+    box-shadow: 0px 2px 2px #099;
+    background-color: whitesmoke;
+}
+#movie-box {
+    border: 1px solid #ccc;
+    border-bottom: 0;
 }
 #title {
     display: block;
     font-size: 18px;
     font-weight: bold;
-    margin: 0 15px;
+    margin: 15px;
 }
 #poster {
-    margin: 0 0 0 15px;
+    margin: 15px;
+}
+
+#vote-box {
+    border: 1px solid #ccc;
+}
+
+#vote-stay, #vote-leave {
+    padding: 15px;
+    text-align: center;
+    text-shadow: 1px 1px #ccc;
+    text-transform: uppercase;
+}
+
+#vote-stay:hover, #vote-leave:hover {
+    background: whitesmoke;
+    cursor: pointer;
+}
+
+#vote-stay:active, #vote-leave:active {
+    background: #ccc;
+    cursor: pointer;
+}
+
+#vote-stay {
+    color: #0FB048;
+    background-color: #fff;
+}
+
+.stay #vote-stay {
+    background: #0FB048;
+    color: rgba(242, 242, 242, .95);
+    text-shadow: 1px 1px #666;
+}
+
+#vote-leave {
+    border-left: 1px solid #ccc;
+    color: #EB1C22;
+    background-color: #fff;
+}
+
+.leave #vote-leave {
+    background: #EB1C22;
+    color: rgba(242, 242, 242, .95);
+    text-shadow: 1px 1px #666;
 }

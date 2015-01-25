@@ -4,6 +4,7 @@
 
 <polymer-element name="movie-list" attributes="">
     <template>
+        <link rel="stylesheet" href="../../styles/movie-list.css">
         <core-ajax id="ajax" auto url="../../scripts/in_theaters.json" on-core-response="{{moviesLoaded}}" handleAs="json"></core-ajax>
         <template repeat="{{movie in movies}}">
             <movie-card mtitle="{{movie.title}}" poster="{{movie.posters.thumbnail}}"></movie-card>
