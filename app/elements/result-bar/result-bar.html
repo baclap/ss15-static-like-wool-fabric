@@ -12,17 +12,16 @@
                 stay: 50,
                 leave: 50,
                 observe: {
-                    'stay': 'stayUpdated',
-                    'leave': 'leaveUpdated',
+                    'stay': 'votesUpdated',
+                    'leave': 'votesUpdated',
                 },
                 ready: function() {
                     console.log("result-bar ready");
                 },
-                stayUpdated: function() {
-                    this.$.stay.style.width = this.stay + "%";
-                },
-                leaveUpdated: function() {
-                    this.$.leave.style.width = this.leave + "%";
+                votesUpdated: function() {
+                    var total_votes = this.stay + this.leave;
+                    this.$.stay.style.width = 100 * (this.stay / total_votes) + "%";
+                    this.$.leave.style.width = 100 * (this.leave / total_votes) + "%";
                 }
             });
         })();
