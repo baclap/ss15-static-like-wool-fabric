@@ -33,7 +33,7 @@
             Polymer('main-content', {
                 show_loading: true,
                 show_info: false,
-                searchUrl:"http://api.themoviedb.org/3/movie/now_playing?api_key=053bc4c358ed49c08f6b0d197c632c49",
+                searchUrl:"https://api.themoviedb.org/3/movie/now_playing?api_key=053bc4c358ed49c08f6b0d197c632c49",
                 ready: function() {
                     //console.log('main-content ready');
                     var self = this;
@@ -41,10 +41,10 @@
                         self.show_loading = false;
                     });
                     this.addEventListener('input-detected',function(e){
-                        self.searchUrl="http://api.themoviedb.org/3/search/movie?api_key=053bc4c358ed49c08f6b0d197c632c49&query="+encodeURIComponent(this.user_input);
+                        self.searchUrl="https://api.themoviedb.org/3/search/movie?api_key=053bc4c358ed49c08f6b0d197c632c49&query="+encodeURIComponent(this.user_input);
                     });
                     this.addEventListener('search-off', function(e){
-                        self.searchUrl = "http://api.themoviedb.org/3/movie/now_playing?api_key=053bc4c358ed49c08f6b0d197c632c49"
+                        self.searchUrl = "https://api.themoviedb.org/3/movie/now_playing?api_key=053bc4c358ed49c08f6b0d197c632c49"
                     });
                 },
                 toggle: function() {
