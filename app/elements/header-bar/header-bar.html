@@ -1,15 +1,18 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/pvc-globals/pvc-globals.html">
 <link rel="import" href="../../bower_components/core-icons/core-icons.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
-<polymer-element name="header-bar" attributes="">
+
+<polymer-element name="header-bar" attributes="userInput">
     <template>
         <link rel="stylesheet" href="../../styles/header-bar.css">
+        
         <core-toolbar>
             <span id="inTheatersNow" flex hidden?="{{!search_is_off}}">In Theaters Now</span>
-            <paper-input id="searchInput" flex label="Search by title" hidden?="{{search_is_off}}"></paper-input>
+            <paper-input id="searchInput" flex label="Search by title" hidden?="{{search_is_off}}" value="{{userInput}}" on-keyup="{{release_key}}"></paper-input>
             <paper-icon-button on-click="{{toggleSearch}}" icon="{{icon}}"></paper-icon-button>
         </core-toolbar>
     </template>
@@ -18,17 +21,35 @@
             Polymer('header-bar', {
                 search_is_off: true,
                 icon: 'search',
+                userInput: "",
                 ready: function() {
                     console.log("header-bar ready");
+                    //console.log(userInput);
+
                 },
+                release_key: function(){
+                    //console.log("User Input detected");
+                    clearTimeout();
+                     var self = this;
+                  //   console.log(this.fire('input-detected'));
+                     setTimeout(function(){
+                         self.fire('input-detected');
+                    }, 2000);
+                   
+                  
+
+                    //console.log(this.search_url);
+                    },
                 toggleSearch: function() {
                     if (this.search_is_off) { // then turn it on
                         this.icon = 'clear';
                         this.search_is_off = false;
+
                     } else { // turn it off
                         this.icon = 'search';
                         this.search_is_off = true;
                         this.$.searchInput.value = '';
+                        this.fire('search-off');
                     }
                 }
             });

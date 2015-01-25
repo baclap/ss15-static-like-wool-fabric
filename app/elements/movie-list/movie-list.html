@@ -1,11 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../bower_components/pvc-globals/pvc-globals.html">
 <link rel="import" href="../movie-card/movie-card.html">
+<link rel="import" href="../header-bar/header-bar.html">
 
-<polymer-element name="movie-list" attributes="">
+
+<polymer-element name="movie-list" attributes="searchUrl">
     <template>
         <link rel="stylesheet" href="../../styles/movie-list.css">
-        <core-ajax id="ajax" auto url="{{search_url}}" on-core-response="{{moviesLoaded}}" handleAs="json"></core-ajax>
+        
+        <core-ajax id="ajax" auto url="{{searchUrl}}" on-core-response="{{moviesLoaded}}" handleAs="json"></core-ajax>
         <template repeat="{{movie in movies}}">
             <movie-card movie_title="{{movie.title}}" movie_poster="https://image.tmdb.org/t/p/w150{{movie.poster_path}}" movie_id="{{movie.id}}"></movie-card>
         </template>
@@ -14,10 +18,21 @@
         (function () {
             Polymer('movie-list', {
                 movies: [],
-                search_url:"http://api.themoviedb.org/3/movie/now_playing?api_key=053bc4c358ed49c08f6b0d197c632c49",
+                searchUrl:"",
+                // search_url:"http://api.themoviedb.org/3/movie/now_playing?api_key=053bc4c358ed49c08f6b0d197c632c49",
                 ready: function() {
                     console.log("movie-list ready");
+                   // console.log(searchUrl);
+                 
+                // console.log(this.globals.search_global_url);
+                   /* var self = this;
+                    this.addEventListener('input-detected', function(e){
+                        console.log("Event Detected");
+                        self.search_url="http://api.themoviedb.org/3/search/movie?api_key=053bc4c358ed49c08f6b0d197c632c49&query=taken";
+
+                    });*/
                 },
+                
                 moviesLoaded: function() {
                     this.movies = this.$.ajax.response.results;
                  
