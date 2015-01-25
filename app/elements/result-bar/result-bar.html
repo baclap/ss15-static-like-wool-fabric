@@ -20,8 +20,27 @@
                 },
                 votesUpdated: function() {
                     var total_votes = this.stay + this.leave;
-                    this.$.stay.style.width = 100 * (this.stay / total_votes) + "%";
-                    this.$.leave.style.width = 100 * (this.leave / total_votes) + "%";
+                    if (this.stay == 0 && this.leave == 0) {
+                        // no votes yet...
+                        this.$.stay.style.width = "50%";
+                        this.$.leave.style.width = "50%";
+                    } else {
+                        var stay_percent = this.getWidthPercent(this.stay, total_votes);
+                        var leave_percent = this.getWidthPercent(this.leave, total_votes);
+                        this.$.stay.style.width = stay_percent + "%";
+                        this.$.leave.style.width = leave_percent + "%";
+                    }
+                },
+                getWidthPercent: function(votes, total) {
+                    var width_percent = 100 * (votes / total);
+                    // mins and maxes for width percent makes our lives easier...
+                    if (width_percent > 90) {
+                        return 90;
+                    } else if (width_percent < 10) {
+                        return 10;
+                    } else {
+                        return width_percent;
+                    }
                 }
             });
         })();
