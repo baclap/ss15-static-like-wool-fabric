@@ -25,7 +25,6 @@
                 movie_poster: null,
                 vote_choice: null,
                 ready: function() {
-                    console.log("movie-card ready");
                 },
                 voteStay: function() {
                     if (this.vote_choice != "stay") {
@@ -33,7 +32,6 @@
                     } else {
                         this.vote_choice = null;
                     }
-                    console.log("vote to stay");
                 },
                 voteLeave: function() {
                     if (this.vote_choice != "leave") {
@@ -41,7 +39,6 @@
                     } else {
                         this.vote_choice = null;
                     }
-                    console.log("vote to leave");
                 }
             });
         })();
